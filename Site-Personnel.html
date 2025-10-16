@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mon Site Personnel</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f4f6f8;
+    }
+
+    
+    header {
+      background-color: #004080;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+
+    nav {
+      margin-top: 10px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    
+    iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
+      background-color: white;
+    }
+
+    
+    footer {
+      background-color: #0b80f5;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  
+  <header>
+    <h1>Bienvenue sur mon site personnel</h1>
+    <nav>
+      <a href="#infos" onclick="charger('infos')">Infos personnelles</a>
+      <a href="#diplomes" onclick="charger('diplomes')">Diplômes</a>
+      <a href="#formulaire" onclick="charger('formulaire')">Contact</a>
+      <a href="#map" onclick="charger('map')">Localisation</a>
+    </nav>
+  </header>
+
+  
+  <main>
+    <iframe id="zone" title="contenu"></iframe>
+  </main>
+
+  
+  <footer>
+    © 2025 Hosni Nheri — Tous droits réservés | Email : nherihosni286@gmail.com
+  </footer>
+
+  <script>
+    
+    const pages = {
+      infos: `
+        <html><body style="background-color:#e6f2ff; font-family:Arial; text-align:center;">
+          <h2>Informations personnelles</h2>
+          <img src="Profil.jpg" alt="Photo de profil" style="border-radius:50%;width:150px;height:150px;margin-top:10px;">
+          <table style="margin:20px auto;border-collapse:collapse;">
+            <tr><td style="border:1px solid #004080;padding:8px 15px;"><b>Nom :</b></td><td style="border:1px solid #004080;padding:8px 15px;">Hosni Nheri</td></tr>
+            <tr><td style="border:1px solid #004080;padding:8px 15px;"><b>Date de naissance :</b></td><td style="border:1px solid #004080;padding:8px 15px;">03 Décembre 2003</td></tr>
+            <tr><td style="border:1px solid #004080;padding:8px 15px;"><b>Adresse :</b></td><td style="border:1px solid #004080;padding:8px 15px;">Kairouan Ville ,Tunisie</td></tr>
+            <tr><td style="border:1px solid #004080;padding:8px 15px;"><b>Email :</b></td><td style="border:1px solid #004080;padding:8px 15px;">nherihosni286@gmail.com</td></tr>
+            <tr><td style="border:1px solid #004080;padding:8px 15px;"><b>Téléphone :</b></td><td style="border:1px solid #004080;padding:8px 15px;">+216 53******</td></tr>
+          </table>
+        </body></html>
+      `,
+
+      diplomes: `
+        <html><body style="background-color:#f9f9f9; font-family:Arial; text-align:center;">
+          <h2>Mes diplômes et certificats</h2>
+          <table style="width:80%;margin:20px auto;border-collapse:collapse;">
+            <tr style="background-color:#004080;color:white;">
+              <th style="padding:10px;border:1px solid #666;">Année</th>
+              <th style="padding:10px;border:1px solid #666;">Diplôme / Certificat</th>
+              <th style="padding:10px;border:1px solid #666;">Établissement</th>
+            </tr>
+            <tr><td style="border:1px solid #666;padding:10px;">2022</td><td style="border:1px solid #666;padding:10px;">Baccalauréat Technologique</td><td style="border:1px solid #666;padding:10px;">Lycée Kairouan </td></tr>
+            <tr><td style="border:1px solid #666;padding:10px;">2024</td><td style="border:1px solid #666;padding:10px;">Diplome Préparatoire</td><td style="border:1px solid #666;padding:10px;">IPEIK</td></tr>
+            <tr><td style="border:1px solid #666;padding:10px;">2024</td><td style="border:1px solid #666;padding:10px;">Certification Innovating with Google Cloud IA </td><td style="border:1px solid #666;padding:10px;">ENET'COM</td></tr>
+            <tr><td style="border:1px solid #666;padding:10px;">2025</td><td style="border:1px solid #666;padding:10px;">Certification CCNA Introduction </td><td style="border:1px solid #666;padding:10px;">ENET'COM</td></tr>
+          </table>
+        </body></html>
+      `,
+
+      formulaire: `
+        <html><body style="background-color:#e8f5e9; font-family:Arial; text-align:center;">
+          <h2>Contactez-moi</h2>
+          <form style="display:inline-block;text-align:left;margin-top:20px;">
+            <label>Nom :</label><br>
+            <input type="text" name="nom" required style="width:250px;margin:5px 0;padding:8px;"><br>
+            <label>Email :</label><br>
+            <input type="email" name="email" required style="width:250px;margin:5px 0;padding:8px;"><br>
+            <label>Message :</label><br>
+            <textarea name="message" rows="4" style="width:250px;margin:5px 0;padding:8px;"></textarea><br>
+            <input type="submit" value="Envoyer" style="background-color:#004080;color:white;padding:8px 15px;border:none;border-radius:5px;cursor:pointer;">
+          </form>
+        </body></html>
+      `,
+
+      map: `
+        <html><body style="text-align:center;">
+          <h2>Ma localisation</h2>
+          <iframe width="80%" height="400" style="border:0;" loading="lazy" allowfullscreen
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3274.713816704669!2d10.755647349999998!3d34.83828730000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13002cd2cef7333d%3A0xaa3a1cf6d7fb55b0!2sEcole%20nationale%20d&#39;Electronique%20et%20des%20T%C3%A9l%C3%A9communications%20de%20Sfax%D8%8C%20Technopole%20Sfax%2C%20Route%20Tunis%20km%2011%2C%20cite%20Ons%2C%20Sfax!5e0!3m2!1sfr!2stn!4v1759997595931!5m2!1sfr!2stn" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </body></html>
+      `
+    };
+
+    
+    function charger(page) {
+      const iframe = document.getElementById('zone');
+      iframe.srcdoc = pages[page];
+    }
+
+    window.onload = () => charger('infos');
+  </script>
+</body>
+</html>
